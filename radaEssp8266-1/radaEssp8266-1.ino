@@ -9,17 +9,17 @@
 #include <BlynkSimpleEsp8266.h>
 
 // WiFi & Blynk
-char auth[] = BLYNK_AUTH_TOKEN;  // Thay bằng Auth Token từ Blynk
-char ssid[] = "N5";         // Tên WiFi
-char pass[] = "123456789";     // Mật khẩu WiFi
+char auth[] = BLYNK_AUTH_TOKEN;  
+char ssid[] = "N5";        
+char pass[] = "123456789";     
 
-// Khai báo chân linh kiện
+
 #define TRIG_PIN D6
 #define ECHO_PIN D7
 #define BUZZER_PIN D5
 #define SERVO_PIN D4
 
-Servo servo;//scl D1 - Sda D2
+
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 void setup() {
@@ -27,18 +27,16 @@ void setup() {
     // Kết nối WiFi với Blynk
     Blynk.begin(auth, ssid, pass);
 
-    // Khởi động LCD
+  
     lcd.begin();
     lcd.backlight();
 
-    // Khởi động cảm biến và buzzer
+ 
     pinMode(TRIG_PIN, OUTPUT);
     pinMode(ECHO_PIN, INPUT);// t 
     pinMode(BUZZER_PIN, OUTPUT);
     digitalWrite(BUZZER_PIN, LOW);
-    // Khởi động I2C (SDA = D2, SCL = D1)
-    // Wire.begin(D2, D1);
-    // Khởi động servo
+   
     servo.attach(SERVO_PIN);
 
     lcd.clear();
@@ -79,10 +77,9 @@ void scanAndDisplay(bool forward) {
             objectDetected = true;
         }
 
-        // Gửi dữ liệu lên Blynk
         Blynk.virtualWrite(V0, angle);    // Gửi góc quét
         Blynk.virtualWrite(V1, distance); // Gửi khoảng cách
-
+        // Hiển thị trên Serial Monitor
         Serial.print("Angle: ");
         Serial.print(angle);
         Serial.print(" | Distance: ");
