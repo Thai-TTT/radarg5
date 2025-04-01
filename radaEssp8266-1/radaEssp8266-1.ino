@@ -1,6 +1,6 @@
-#define BLYNK_TEMPLATE_ID "TMPL6efk3zTCm"
+#define BLYNK_TEMPLATE_ID "TMPL6YUSIm25I"
 #define BLYNK_TEMPLATE_NAME "rada"
-#define BLYNK_AUTH_TOKEN "Q_THZMHDVEZiEXUewTHNI8jNlVx_2G2I"
+#define BLYNK_AUTH_TOKEN "-j07b5gFWYDRbFB7FjbN0HhOqaA1G85-"
 
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
